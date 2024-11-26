@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الكتاب</title>
+</head>
+<body>
+    <h1>{{ book.title }}</h1>
+    <p>{{ book.description }}</p>
+    <div class="lessons">
+        {% for lesson in book.lesson_set.all %}
+            <div class="lesson">
+                <h3>{{ lesson.title }}</h3>
+                <a href="{{ lesson.presentation.url }}" target="_blank">عرض الدرس</a>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- إضافة المزيد من التفاصيل حسب الحاجة -->
+</body>
+</html>

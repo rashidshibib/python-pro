@@ -1,0 +1,27 @@
+{% extends "products/base.html" %}
+
+{% block content %}
+    <h2>قائمة المنتجات</h2>
+    <div class="list-group">
+        {% for product in products %}
+            <div class="list-group-item">
+                <h5 class="mb-1">{{ product.name }}</h5>
+                <h2>{{ product.name }}</h2>
+                <p class="mb-1">السعر: {{ product.price }} ر.ق</p>
+                <p>وصف: {{ product.description }}</p>
+                <a href="{% url 'buy_product' product.id %}" class="btn btn-primary">اشترِ الآن</a>
+                <a href="{% url 'buy_product' product.id %}">
+                    <button>اشترِ الآن</button>
+                </a>
+                <!-- افتراضاً أنك في صفحة قائمة المنتجات -->
+                <a href="{% url 'buy_product' product.id %}">شراء الآن</a>
+
+                
+            </div>
+        {% empty %}
+            <p>لا توجد منتجات متاحة حاليًا.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+

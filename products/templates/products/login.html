@@ -1,0 +1,30 @@
+{% extends 'products/base.html' %}
+
+{% block title %}تسجيل الدخول{% endblock %}
+
+{% block content %}
+<div class="login-page" dir="rtl">
+    <h1 class="text-center">تسجيل الدخول</h1>
+
+    <form method="POST" class="login-form" dir="rtl">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+    </form>
+
+    <div class="text-center my-3">
+        <p>أو</p>
+        <a href="{% url 'google_login' %}" class="btn btn-danger">تسجيل الدخول عبر جوجل</a>
+    </div>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

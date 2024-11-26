@@ -1,0 +1,15 @@
+<!-- products/templates/products/success.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+</head>
+<body>
+    <h1>Success!</h1>
+    <p>Your purchase of book ID {{ book_id }} was successful!</p>
+    <a href="{% url 'download_file' book_id=book_id %}">Download your file</a>
+</body>
+</html>

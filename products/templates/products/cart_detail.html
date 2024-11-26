@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>سلتك</h2>
+<ul>
+    {% for item in cart.items %}
+    <li>
+        <h3>{{ item.product.name }}</h3>
+        <p>سعر: {{ item.product.price }} ر.ق</p>
+        <p>الكمية: {{ item.quantity }}</p>
+    </li>
+    {% endfor %}
+</ul>
+<p>المجموع: {{ cart.total }} ر.ق</p>
+{% endblock %}

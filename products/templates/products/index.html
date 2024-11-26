@@ -1,0 +1,11 @@
+{% extends 'products/base.html' %}
+
+{% block title %}الرئيسية{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="display-4">مرحبًا بك في موقعنا</h1>
+        <p class="lead">اكتشف منتجاتنا الحصرية، قم بتنزيل الملفات التعليمية والموارد الأخرى.</p>
+        <a href="{% url 'product_list' %}" class="btn btn-primary btn-lg">استعراض المنتجات</a>
+    </div>
+{% endblock %}

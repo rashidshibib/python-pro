@@ -1,0 +1,16 @@
+{% extends 'products/base.html' %}
+
+{% block title %}اتصل بنا{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-4">اتصل بنا</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-maroon">إرسال</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

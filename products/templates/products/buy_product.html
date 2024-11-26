@@ -1,0 +1,24 @@
+<!-- templates/products/buy_product.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+   <!-- <h1>شراء المنتج: {{ product.name }}</h1>
+    <p>سعر المنتج: {{ product.price }} ريال</p>
+    
+    <!-- نموذج الدفع -->
+   <!-- <form method="post" action="{% url 'create_payment' product.id %}">
+        {% csrf_token %}
+       
+        <button type="submit" class="btn btn-primary">شراء باستخدام PayPal</button>
+        <h2>تمت إضافة {{ product.name }} إلى سلتك!</h2>
+        <p>سعر: {{ product.price }} ر.ق</p>
+        <a href="{% url 'product_list' %}">استمرار التسوق</a>
+        <a href="{% url 'cart_detail' %}">عرض السلة</a>-->
+        <h1>شراء المنتج: {{ product.name }}</h1>
+        <p>السعر: {{ product.price }} ريال</p>
+        <button>إتمام الشراء</button>
+        
+
+    </form>
+{% endblock %}
+

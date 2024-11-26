@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الكتب</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'products/css/styles.css' %}">
+
+    <link rel="stylesheet" href="{% static 'products/css/product_styles.css' %}">
+
+</head>
+<body>
+    <h1>الكتب لكل صف</h1>
+    <div class="class-container">
+        {% for class in classes %}
+            <div class="class-group">
+                <h2>{{ class.name }}</h2>
+                <div class="books">
+                    {% for book in class.book_set.all %}
+                        <div class="book">
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover" onclick="openBookPopup('{{ book.id }}')">
+                            <h3>{{ book.title }}</h3>
+                            <p>{{ book.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- نوافذ منبثقة للكتب -->
+    {% for book in classes.books.all %}
+        <div id="popup-{{ book.id }}" class="popup">
+            <div class="popup-content">
+                <h2>{{ book.title }}</h2>
+                <a href="{% url 'book_detail' book.id %}">اذهب إلى صفحة الكتاب</a>
+                <span class="close" onclick="closeBookPopup('{{ book.id }}')">&times;</span>
+            </div>
+        </div>
+    {% endfor %}
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

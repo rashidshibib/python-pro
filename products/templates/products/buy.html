@@ -1,0 +1,49 @@
+<!-- في ملف templates/products/buy.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شراء المنتج</title>
+</head>
+<body>
+    <h1>شراء المنتج: {{ product.name }}</h1>
+    <p>الوصف: {{ product.description }}</p>
+    <p>السعر: {{ product.price }} ريال</p>
+
+    <!-- زر لإتمام عملية الشراء -->
+    <form action="/process_payment/" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+        <button type="submit">شراء الآن</button>
+    </form>
+    <h1>Buy {{ product.name }}</h1>
+    <p>Price: {{ product.price }}</p>
+    <p>Description: {{ product.description }}</p>
+
+    <form action="{% url 'purchase' product.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Buy Now</button>
+    </form>
+    {% for product in products %}
+    <div>
+        <h3>{{ product.name }}</h3>
+        <p>Price: {{ product.price }}</p>
+        <form action="{% url 'buy_product' product.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">اشتري الآن</button>
+        </form>
+    </div>
+    
+    {% endfor %}
+    {% extends 'products/base.html' %}
+
+    {% block content %}
+    <h1>{{ product.name }}</h1>
+    <p>Price: {{ product.price }}</p>
+    <!-- محتوى آخر -->
+    {% endblock %}
+
+
+</body>
+</html>

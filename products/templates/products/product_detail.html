@@ -1,0 +1,13 @@
+{% extends 'products/base.html' %}
+
+{% block content %}
+<h1>{{ product.name }}</h1>
+<p>{{ product.description }}</p>
+<p>السعر: {{ product.price }}</p>
+{% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+{% endif %}
+<a href="{% url 'product_update' product.pk %}">تعديل</a>
+<a href="{% url 'product_delete' product.pk %}">حذف</a>
+<a href="{% url 'product_list' %}">عودة إلى القائمة</a>
+{% endblock %}

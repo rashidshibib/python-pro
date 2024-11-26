@@ -1,0 +1,41 @@
+<!-- templates/products/book_lessons.html -->
+ {% load static %}
+</html>
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>{{ book.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'products/css/styles.css' %}">
+    <!-- في ملف base.html أو أي ملف HTML تستخدمه -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{% static 'products/css/product_styles.css' %}">
+ <!-- تأكد من إضافة رابط إلى ملف CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>{{ book.title }}</h1>
+        <p>{{ book.description }}</p>
+
+        <h2>الدروس المتاحة:</h2>
+        <ul>
+            {% for lesson in lessons %}
+                <li>
+                    <h3>{{ lesson.title }}</h3>
+                    <p>السعر: {{ lesson.price }} ر.ق</p>
+                    <a href="{% url 'buy_lesson' lesson.id %}" class="btn">Buy Now</a>
+                </li>
+            {% empty %}
+                <li>لا توجد دروس متاحة لهذا الكتاب.</li>
+            {% endfor %}
+        </ul>
+        
+        <a href="{% url 'product_list' %}" class="btn">رجوع إلى قائمة المنتجات</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "products/base.html" %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- عرض صورة المنتج -->
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ product.name }}</h2>
+                <p class="text-muted">السعر: {{ product.price }} ر.ق</p>
+                <p>{{ product.description }}</p>
+
+                <!-- زر لشراء المنتج -->
+                <a href="{% url 'buy_product' product.id %}" class="btn btn-primary">اشترِ الآن</a>
+            </div>
+        </div>
+
+        <!-- معلومات إضافية عن المنتج -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h4>مواصفات المنتج</h4>
+                <ul>
+                    <li>اسم المنتج: {{ product.name }}</li>
+                    <li>السعر: {{ product.price }} ر.ق</li>
+                    <li>الوصف: {{ product.description }}</li>
+                    <!-- يمكنك إضافة المزيد من المعلومات هنا -->
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
